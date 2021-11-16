@@ -3,20 +3,21 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 public class premier {
-	public  void claculepremier(int nb) {
-		int [] tab= {2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,51,59},rep;
-		rep = new int[16];
+	public  int  claculepremier(int nb) {
+		int [] tab= {2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,51,59};
+		int cpt=0;
 		System.out.println(1+" et "+nb);
 		for(int i=0;i<16;i++) {
 			if(nb%tab[i] == 0) {
 				System.out.println(tab[i]+" et "+nb/tab[i]);
+				cpt++;
 			}
 		}
+		return cpt;
 	}
 	
 	public int souscalcule(int nb){
-		int [] tab= {2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,51,59},rep;
-		rep = new int[16];
+		int [] tab= {2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,51,59};
 		int nbrenvoi = 0;
 		for(int i=0;i<16;i++) {
 			if(nb%tab[i] == 0) {
@@ -70,11 +71,22 @@ public class premier {
 
 	}
 
+	public void premieroupas(int p) {
+		if(p != 0) 
+			System.out.println("votre chiffre n'est pas premier");
+		else
+			System.out.println("votre chiffre est premier");
+	}
+	
+	
 	public static void main(String[] args) {
 		premier p = new premier();
 		Scanner scan = new Scanner(System.in);
 		int i = scan.nextInt();
-		p.claculepremier(i);
+		System.out.println("s'avoir si votre nombre et premier ou non  :");
+		int n =p.claculepremier(i);
+		p.premieroupas(n);
+		System.out.println("la décompositions de votre chiffre :");
 		p.calculedécomposition(i);
 		scan.close();
 

@@ -11,6 +11,7 @@ public class premier {
 		System.out.println(1+" et "+nb);
 		for(int i=0;i<16;i++) {
 			if(nb%tab[i] == 0) {
+				
 				System.out.println(tab[i]+" et "+nb/tab[i]);
 				cpt++;
 			}
@@ -42,7 +43,6 @@ public class premier {
 			ret = p.souscalcule(nb);
 			if(ret == 0) {
 					cpt++;
-					i.add(nb);
 			}else {
 				i.add(ret);
 				nb=nb/ret;
@@ -72,6 +72,21 @@ public class premier {
 		System.out.println(s);// affichage de la décompostions 
 
 	}
+	public void affichepremie(int nb){
+		int [] tab= {2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,51,59};
+		int cpt=0,i=0;
+		String s="";
+		while(cpt == 0) {
+			if(tab[i]*tab[i] <nb ) {
+				s+=tab[i]+",";
+			}else if(i==15)
+					cpt++;
+				  else
+				    cpt++;
+			i++;
+		}
+		System.out.println(s);
+	}
 
 	public void premieroupas(int p) {
 		if(p != 0) {
@@ -98,6 +113,8 @@ public class premier {
 		System.out.println("|saisiser un nombre pour trouver son premier et sa décompositions : |");
 		System.out.println("--------------------------------------------------------------------/");
 		int i = scan.nextInt();
+		System.out.println("les nombre premier pour votre nombre peuve aitre :");
+		p.affichepremie(i);
 		System.out.println("s'avoir si votre nombre et premier ou non  :");
 		int n =p.claculepremier(i);
 		p.premieroupas(n);

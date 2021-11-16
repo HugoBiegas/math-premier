@@ -7,12 +7,14 @@ public class premier {
 	public  int  claculepremier(int nb) { //clacule directement en affichant le premier ces as dire son multiplicateur et son résultat
 		int [] tab= {2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,51,59};
 		int cpt=0;
+		if(nb != 0) {
 		System.out.println(1+" et "+nb);
 		for(int i=0;i<16;i++) {
 			if(nb%tab[i] == 0) {
 				System.out.println(tab[i]+" et "+nb/tab[i]);
 				cpt++;
 			}
+		}
 		}
 		return cpt;
 	}
@@ -43,7 +45,6 @@ public class premier {
 					i.add(nb);
 			}else {
 				i.add(ret);
-				
 				nb=nb/ret;
 				
 			}
@@ -77,10 +78,14 @@ public class premier {
 			System.out.println("-------------------------------");
 			System.out.println("votre chiffre n'est pas premier");
 			System.out.println("-------------------------------");
+		}else if(p==0){
+			System.out.println("----------------------------------------");
+			System.out.println("votre chiffre a une infiniter de diviser");
+			System.out.println("----------------------------------------");
 		}else {
 			System.out.println("--------------------------");
 			System.out.println("votre chiffre est premier");
-			System.out.println("--------------------------");
+			System.out.println("--------------------------");	
 		}
 	}
 	

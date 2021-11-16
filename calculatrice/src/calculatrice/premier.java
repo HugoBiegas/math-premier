@@ -3,7 +3,8 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 public class premier {
-	public  int  claculepremier(int nb) {
+	
+	public  int  claculepremier(int nb) { //clacule directement en affichant le premier ces as dire son multiplicateur et son résultat
 		int [] tab= {2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,51,59};
 		int cpt=0;
 		System.out.println(1+" et "+nb);
@@ -16,7 +17,7 @@ public class premier {
 		return cpt;
 	}
 	
-	public int souscalcule(int nb){
+	public int souscalcule(int nb){// calcule pour trouver quelle est la valeur premier la plus grande
 		int [] tab= {2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,51,59};
 		int nbrenvoi = 0;
 		for(int i=0;i<16;i++) {
@@ -29,13 +30,13 @@ public class premier {
 		return nbrenvoi;
 	}
 	
-	public void calculedécomposition(int nb) {
+	public void calculedécomposition(int nb) {// permet de montrer le décompostions d'un nombre
 		int cpt = 0, ret,f,n;
 		String s="";
 		ArrayList<Integer> i = new ArrayList<Integer>();
 		premier p = new premier();
 		
-		while(cpt == 0) {
+		while(cpt == 0) {// calcule de la décompostions classique
 			ret = p.souscalcule(nb);
 			if(ret == 0) {
 					cpt++;
@@ -48,40 +49,48 @@ public class premier {
 			}
 		}
 		
-			for (int j = 0; j < i.size(); j++) {
-				cpt=0;
-				f = i.get(j);
-				n=f;
-				while(cpt == 0){
-					ret = p.souscalcule(f);
-					if(ret == 0) {
-						if((i.size())-1 == j) { 
-							s+= n;
-						}else {
-							s+= n+"*";
-						}
-						cpt++;	
+		for (int j = 0; j < i.size(); j++) {// calcule de la décompostions appret décompostions ces as dire avec le résultat de la décompositions 
+			cpt=0;
+			f = i.get(j);
+			n=f;
+			while(cpt == 0){// mise en plase du tchec pour voir si chaque terme peux aitre encore réduit 
+				ret = p.souscalcule(f);
+				if(ret == 0) {
+					if((i.size())-1 == j) { 
+						s+= n;
 					}else {
-						f=f/ret;
-						n=ret;
+						s+= n+"*";
 					}
+					cpt++;	
+				}else {
+					f=f/ret;
+					n=ret;
 				}
 			}
-		System.out.println(s);
+		}
+		System.out.println(s);// affichage de la décompostions 
 
 	}
 
 	public void premieroupas(int p) {
-		if(p != 0) 
+		if(p != 0) {
+			System.out.println("-------------------------------");
 			System.out.println("votre chiffre n'est pas premier");
-		else
+			System.out.println("-------------------------------");
+		}else {
+			System.out.println("--------------------------");
 			System.out.println("votre chiffre est premier");
+			System.out.println("--------------------------");
+		}
 	}
 	
 	
 	public static void main(String[] args) {
 		premier p = new premier();
 		Scanner scan = new Scanner(System.in);
+		System.out.println("/--------------------------------------------------------------------");
+		System.out.println("|saisiser un nombre pour trouver son premier et sa décompositions : |");
+		System.out.println("--------------------------------------------------------------------/");
 		int i = scan.nextInt();
 		System.out.println("s'avoir si votre nombre et premier ou non  :");
 		int n =p.claculepremier(i);

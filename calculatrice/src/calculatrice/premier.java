@@ -93,6 +93,7 @@ public class premier {
 	public static void main(String[] args) {
 		premier p = new premier();
 		Scanner scan = new Scanner(System.in);
+		System.out.println("©hugo biegas©");
 		System.out.println("/--------------------------------------------------------------------");
 		System.out.println("|saisiser un nombre pour trouver son premier et sa décompositions : |");
 		System.out.println("--------------------------------------------------------------------/");

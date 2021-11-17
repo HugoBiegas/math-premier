@@ -11,7 +11,6 @@ public class premier {
 		System.out.println(1+" et "+nb);
 		for(int i=0;i<16;i++) {
 			if(nb%tab[i] == 0) {
-				
 				System.out.println(tab[i]+" et "+nb/tab[i]);
 				cpt++;
 			}
@@ -32,10 +31,8 @@ public class premier {
 		}
 		return nbrenvoi;
 	}
-	
-	public void calculedécomposition(int nb) {// permet de montrer le décompostions d'un nombre
-		int cpt = 0, ret,f,n;
-		String s="";
+	public void calculedécompositionplusgrand(int nb) {// permet de montrer le décompostions d'un nombre
+		int cpt = 0, ret;
 		ArrayList<Integer> i = new ArrayList<Integer>();
 		premier p = new premier();
 		
@@ -43,13 +40,20 @@ public class premier {
 			ret = p.souscalcule(nb);
 			if(ret == 0) {
 					cpt++;
+					i.add(nb);
 			}else {
 				i.add(ret);
 				nb=nb/ret;
 				
 			}
 		}
-		
+		p.affichecalcule(i,p);
+	}
+
+	
+		public void affichecalcule(ArrayList<Integer> i,premier p) {
+			int cpt,f,n,ret;
+			String s="";
 		for (int j = 0; j < i.size(); j++) {// calcule de la décompostions appret décompostions ces as dire avec le résultat de la décompositions 
 			cpt=0;
 			f = i.get(j);
@@ -57,6 +61,7 @@ public class premier {
 			while(cpt == 0){// mise en plase du tchec pour voir si chaque terme peux aitre encore réduit 
 				ret = p.souscalcule(f);
 				if(ret == 0) {
+					n=f;
 					if((i.size())-1 == j) { 
 						s+= n;
 					}else {
@@ -64,14 +69,14 @@ public class premier {
 					}
 					cpt++;	
 				}else {
-					f=f/ret;
 					n=ret;
+					f=f/ret;
 				}
 			}
 		}
 		System.out.println(s);// affichage de la décompostions 
-
 	}
+		
 	public void affichepremie(int nb){
 		int [] tab= {2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,51,59};
 		int cpt=0,i=0;
@@ -79,10 +84,8 @@ public class premier {
 		while(cpt == 0) {
 			if(tab[i]*tab[i] <nb ) {
 				s+=tab[i]+",";
-			}else if(i==15)
+			}else if(i==15 && tab[i]*tab[i] >nb)
 					cpt++;
-				  else
-				    cpt++;
 			i++;
 		}
 		System.out.println(s);
@@ -119,7 +122,7 @@ public class premier {
 		int n =p.claculepremier(i);
 		p.premieroupas(n);
 		System.out.println("la décompositions de votre chiffre :");
-		p.calculedécomposition(i);
+		p.calculedécompositionplusgrand(i);
 		scan.close();
 
 	}
